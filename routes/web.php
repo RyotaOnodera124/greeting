@@ -32,3 +32,7 @@ Route::get("/comments/evening", function () {
 Route::get("/comments/night", function () {
     return view("message.night");
 });
+
+Route::get("/comments/freeword/{msg}", function ($msg) {
+    return view("message.word", ["msg" => $msg]);
+});
