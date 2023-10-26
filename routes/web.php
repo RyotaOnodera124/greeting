@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Translation\MessageCatalogue;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,26 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get("/comments/morning", [MessageController::class, "morning"]);
 
-Route::get("/comments/morning", function () {
-    return view("message.morning");
-});
+Route::get("/comments/afternoon", [MessageController::class, "afternoon"]);
 
-Route::get("/comments/afternoon", function () {
-    return view("message.afternoon");
-});
+Route::get("/comments/evening", [MessageController::class, "evening"]);
 
-Route::get("/comments/evening", function () {
-    return view("message.evening");
-});
+Route::get("/comments/night", [MessageController::class, "night"]);
 
-Route::get("/comments/night", function () {
-    return view("message.night");
-});
+Route::get("/comments/freeword/{msg}", [MessageController::class, "word"]);
 
-Route::get("/comments/freeword/{msg}", function ($msg) {
-    return view("message.word", ["msg" => $msg]);
-});
+Route::get("/comments/random", [MessageController::class, 'random']);
+
